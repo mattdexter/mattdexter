@@ -1,20 +1,28 @@
-FROM alpine
+FROM python:3-alpine
 
 # Initialize
 RUN mkdir -p /data/web
 WORKDIR /data/web
+RUN mkdir -p logs
 COPY requirements.txt /data/web/
 
 # Setup
 RUN apk update
 RUN apk upgrade
-RUN apk add --update python3 python3-dev postgresql-client postgresql-dev build-base gettext
+
+RUN apk add --update \
+    python3 python3-dev postgresql-client \
+    postgresql-dev build-base gettext
+
 RUN pip3 install --upgrade pip
+RUN pip3 install gunicorn
 RUN pip3 install -r requirements.txt
 
 # Clean
 RUN apk del -r python3-dev postgresql
 
 # Prepare
-COPY . /data/web/
-RUN mkdir -p mattdexter/static/admin
+COPY . /data/web
+COPY ./entrypoint.sh /
+
+ENTRYPOINT ["/entrypoint.sh"]

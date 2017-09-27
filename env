@@ -1,7 +1,7 @@
-SECRET_KEY=$SECRET_KEY
+export SECRET_KEY="5m$_0$by%6yl(xw6zmh_qsqns*pe-x+5dsel^u+ke$!6h+9jth"
 
-DB_NAME=$DB_NAME
-DB_USER=$DB_USER
-DB_PASS=$DB_PASS
-DB_SERVICE=$DB_SERVICE
-DB_PORT=5432
+export DB_NAME=mattdexter_web
+export DB_USER=mattdexter_web
+export DB_PASS=password
+export DB_SERVICE=postgres
+export DB_PORT=5432

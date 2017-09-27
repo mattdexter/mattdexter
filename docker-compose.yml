@@ -10,7 +10,6 @@ web:
   volumes:
     - ./web:/data/web
   working_dir: /data/web/mattdexter
-  command: /usr/bin/gunicorn mattdexter.wsgi:application -w 2 -b :8000
 
 nginx:
   restart: always
@@ -29,7 +28,7 @@ postgres:
     - data
   volumes:
     - ./postgres/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
-    - ./backups/postgresql:/backups
+    - ./backups/postgresql:/backup
   env_file:
     - env
   expose:
@@ -43,7 +42,7 @@ redis:
 
 data:
   restart: always
-  image: alpine
+  image: python:3-alpine
   volumes:
     - /var/lib/postgresql
   command: "true"
