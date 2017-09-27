@@ -1,5 +1,10 @@
-idea
+/web/*
+
+!/web/mattdexter
+!/web/Dockerfile
+!/web/requirements.txt
+
+.idea
 
 .envrc
-
 *.pyc

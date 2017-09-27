@@ -11,8 +11,6 @@ web:
     - ./web:/data/web
   working_dir: /data/web/mattdexter
   command: /usr/bin/gunicorn mattdexter.wsgi:application -w 2 -b :8000
-  extra_hosts:
-    - "mattdexter:127.0.0.1"
 
 nginx:
   restart: always
@@ -31,7 +29,7 @@ postgres:
     - data
   volumes:
     - ./postgres/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
-    - ./backups/postgresql:/backup
+    - ./backups/postgresql:/backups
   env_file:
     - env
   expose:
