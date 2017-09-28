@@ -1,7 +1,7 @@
 SECRET_KEY="5m$_0$by%6yl(xw6zmh_qsqns*pe-x+5dsel^u+ke$!6h+9jth"
 
-DB_NAME=mattdexter_web
-DB_USER=mattdexter_web
+DB_NAME=mattdexter_webapp
+DB_USER=mattdexter_webapp
 DB_PASS=password
 DB_SERVICE=postgres
 DB_PORT=5432
