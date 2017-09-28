@@ -1,12 +1,8 @@
-/web/*
-
-!/web/mattdexter
-
-!/web/Dockerfile
-!/web/entrypoint.sh
-!/web/requirements.txt
-
 .idea
-
 .envrc
 *.pyc
+
+/web/mattdexter/*
+!/web/mattdexter/mattdexter
+!/web/mattdexter/static
+!/web/mattdexter/manage.py
