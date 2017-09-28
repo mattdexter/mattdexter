@@ -1,8 +1,9 @@
 .idea
 .envrc
-*.pyc
 
-/web/mattdexter/*
-!/web/mattdexter/mattdexter
-!/web/mattdexter/static
-!/web/mattdexter/manage.py
+/webapp/mattdexter/*
+!/webapp/mattdexter/mattdexter
+!/webapp/mattdexter/static
+!/webapp/mattdexter/manage.py
+
+*.pyc

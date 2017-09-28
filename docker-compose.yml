@@ -1,6 +1,6 @@
-web:
+webapp:
   restart: always
-  build: ./web/
+  build: ./webapp/
   expose:
     - "8000"
   links:
@@ -8,8 +8,8 @@ web:
     - redis:redis
   env_file: env
   volumes:
-    - ./web:/data/web
-  working_dir: /data/web/mattdexter
+    - ./webapp:/data/webapp
+  working_dir: /data/webapp/mattdexter
 
 nginx:
   restart: always
@@ -17,9 +17,9 @@ nginx:
   ports:
     - "80:80"
   volumes_from:
-    - web
+    - webapp
   links:
-    - web:web
+    - webapp:webapp
 
 postgres:
   restart: always

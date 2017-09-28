@@ -1,9 +1,9 @@
 FROM python:3-alpine
 
 # Initialize
-RUN mkdir -p /data/web
-WORKDIR /data/web
-COPY requirements.txt /data/web/
+RUN mkdir -p /data/webapp
+WORKDIR /data/webapp
+COPY requirements.txt /data/webapp/
 
 # Setup
 RUN apk update
@@ -21,7 +21,7 @@ RUN pip3 install -r requirements.txt
 RUN apk del -r python3-dev postgresql
 
 # Prepare
-COPY . /data/web
+COPY . /data/webapp
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
