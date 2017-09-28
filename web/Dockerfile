@@ -3,7 +3,6 @@ FROM python:3-alpine
 # Initialize
 RUN mkdir -p /data/web
 WORKDIR /data/web
-RUN mkdir -p logs
 COPY requirements.txt /data/web/
 
 # Setup
@@ -23,6 +22,7 @@ RUN apk del -r python3-dev postgresql
 
 # Prepare
 COPY . /data/web
-COPY ./entrypoint.sh /
+COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/bin/sh", "/entrypoint.sh"]

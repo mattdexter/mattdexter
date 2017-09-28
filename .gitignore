@@ -1,7 +1,9 @@
 /web/*
 
 !/web/mattdexter
+
 !/web/Dockerfile
+!/web/entrypoint.sh
 !/web/requirements.txt
 
 .idea
