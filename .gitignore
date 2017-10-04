@@ -1,9 +1,10 @@
 .idea
 .envrc
 
-/webapp/mattdexter/*
-!/webapp/mattdexter/mattdexter
-!/webapp/mattdexter/static
-!/webapp/mattdexter/manage.py
-
-*.pyc
+web/*
+!web/mattdexter
+!web/docker-entrypoint.sh
+!web/Dockerfile
+!web/gunicorn.conf
+!web/manage.py
+!web/requirements.txt

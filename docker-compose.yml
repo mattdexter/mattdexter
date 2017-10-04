@@ -1,43 +1,37 @@
-webapp:
+web:
   restart: always
-  build: ./webapp/
-  expose:
-    - "8000"
+  build: ./web/
   links:
     - postgres:postgres
     - redis:redis
-  env_file: env
   volumes:
-    - ./webapp:/data/webapp
-  working_dir: /data/webapp/mattdexter
+    - /data/web/static
+  expose:
+    - "8000"
 
 nginx:
   restart: always
   build: ./nginx/
   ports:
     - "80:80"
-  volumes_from:
-    - webapp
   links:
-    - webapp:webapp
+    - web:web
+  volumes_from:
+    - web
 
 postgres:
   restart: always
-  image: postgres:latest
-  volumes_from:
-    - data
+  image: postgres
   volumes:
     - ./postgres/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
-    - ./backups/postgresql:/backup
-  env_file: env
+  volumes_from:
+    - data
+  environment:
+    - POSTGRES_USER=mattdexter_web
+    - POSTGRES_PASS=mattdexter_web
+    - POSTGRES_NAME=mattdexter_web
   expose:
     - "5432"
-
-redis:
-  restart: always
-  image: redis:latest
-  expose:
-    - "6379"
 
 data:
   restart: always
@@ -45,3 +39,9 @@ data:
   volumes:
     - /var/lib/postgresql
   command: "true"
+
+redis:
+  restart: always
+  image: redis
+  expose:
+    - "6379"
