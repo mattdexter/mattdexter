@@ -1,5 +1,0 @@
-#!/bin/sh
-set -e
-
-psql -U postgres -c "CREATE USER $POSTGRES_USER PASSWORD '$POSTGRES_PASS'"
-psql -U postgres -c "CREATE DATABASE $POSTGRES_NAME OWNER $POSTGRES_USER"

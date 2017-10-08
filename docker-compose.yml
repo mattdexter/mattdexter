@@ -1,47 +1,54 @@
-web:
-  restart: always
-  build: ./web/
-  links:
-    - postgres:postgres
-    - redis:redis
-  volumes:
-    - /data/web/static
-  expose:
-    - "8000"
+version: '2'
 
-nginx:
-  restart: always
-  build: ./nginx/
-  ports:
-    - "80:80"
-  links:
-    - web:web
-  volumes_from:
-    - web
+services:
 
-postgres:
-  restart: always
-  image: postgres
-  volumes:
-    - ./postgres/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
-  volumes_from:
-    - data
-  environment:
-    - POSTGRES_USER=mattdexter_web
-    - POSTGRES_PASS=mattdexter_web
-    - POSTGRES_NAME=mattdexter_web
-  expose:
-    - "5432"
+  nginx:
+    restart: always
+    build: ./nginx/
+    links:
+      - web:web
+    depends_on:
+      - web
+    volumes_from:
+      - web
+    ports:
+      - "80:80"
 
-data:
-  restart: always
-  image: python:3-alpine
-  volumes:
-    - /var/lib/postgresql
-  command: "true"
+  web:
+    restart: always
+    build: ./web/
+    links:
+      - postgres
+      - redis
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - /data/web/static
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+      - DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE}
+      - DJANGO_STATIC_ROOT=${DJANGO_STATIC_ROOT}
+      - GUNICORN_WORKERS=${GUNICORN_WORKERS}
+      - GUNICORN_BIND=${GUNICORN_BIND}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASS=${POSTGRES_PASS}
+      - POSTGRES_NAME=${POSTGRES_NAME}
+      - POSTGRES_SERVICE=${POSTGRES_SERVICE}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - REDIS_SERVICE=${REDIS_SERVICE}
+      - PERSONAL_FIXTURE=${PERSONAL_FIXTURE}
 
-redis:
-  restart: always
-  image: redis
-  expose:
-    - "6379"
+  postgres:
+    restart: always
+    image: postgres
+    ports:
+      - "5432:5432"
+
+  redis:
+    restart: always
+    image: redis
+    ports:
+      - "6379:6379"
