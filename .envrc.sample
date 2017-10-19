@@ -1,0 +1,18 @@
+export DOCKER_MACHINE_NAME=
+export DOCKER_COMPOSE_FILE=
+
+eval `docker-machine env ${DOCKER_MACHINE_NAME}`
+
+export DJANGO_SECRET_KEY=
+export DJANGO_STATIC_ROOT=
+
+export GUNICORN_WORKERS=
+export GUNICORN_BIND="0.0.0.0:8000"
+
+export NGINX_SERVER_NAME=`docker-machine ip ${DOCKER_MACHINE_NAME}`
+
+export POSTGRES_NAME=
+export POSTGRES_USER=
+export POSTGRES_PASS=
+export POSTGRES_HOST=postgres
+export POSTGRES_PORT=5432

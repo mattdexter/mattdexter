@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+
+  postgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=$POSTGRES_USER
+      - POSTGRES_PASS=$POSTGRES_PASS
+
+  webapp:
+    build: ./webapp
+    volumes:
+      - src:/src
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SECRET_KEY=$DJANGO_SECRET_KEY
+      - DJANGO_STATIC_ROOT=$DJANGO_STATIC_ROOT
+      - GUNICORN_WORKERS=$GUNICORN_WORKERS
+      - GUNICORN_BIND=$GUNICORN_BIND
+      - NGINX_SERVER_NAME=$NGINX_SERVER_NAME
+      - POSTGRES_NAME=$POSTGRES_NAME
+      - POSTGRES_USER=$POSTGRES_USER
+      - POSTGRES_HOST=$POSTGRES_HOST
+      - POSTGRES_PORT=$POSTGRES_PORT
+    depends_on:
+      - postgres
+
+  nginx:
+    build: ./nginx
+    volumes:
+      - src:/src
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - NGINX_SERVER_NAME=$NGINX_SERVER_NAME
+    depends_on:
+      - webapp
+
+volumes:
+  src:

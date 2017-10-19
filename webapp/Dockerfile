@@ -1,6 +1,6 @@
 FROM python:3.5-alpine
 
-RUN mkdir /src
+RUN mkdir -p /src
 WORKDIR /src
 COPY requirements.txt /src/
 
@@ -17,4 +17,4 @@ RUN apk del -r python3-dev postgresql
 
 COPY . /src/
 
-CMD ["gunicorn", "--config", "gunicorn.conf", "mattdexter.wsgi:application"]
+CMD ["gunicorn", "--config", "/src/gunicorn.conf", "mattdexter.wsgi:application"]
