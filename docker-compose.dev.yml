@@ -40,7 +40,6 @@ services:
       - "443:443"
     volumes:
       - /etc/nginx/vhost.d
-      - /usr/share/nginx/html
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./nginx.tmpl:/app/nginx.tmpl
       - ./webapp/static:/src/static
