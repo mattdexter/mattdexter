@@ -5,6 +5,7 @@ services:
   postgres:
     restart: unless-stopped
     image: postgres:latest
+    container_name: postgres
     volumes:
       - data:/var/lib/postgresql/data
     environment:
@@ -14,6 +15,7 @@ services:
   webapp:
     restart: unless-stopped
     image: mattdexter/mattdexter-webapp:latest
+    container_name: webapp
     build: ./webapp
     volumes:
       - ./webapp:/src
@@ -66,9 +68,9 @@ services:
       - ./nginx.tmpl:/etc/docker-gen/templates/nginx.tmpl:ro
       - ./webapp/static:/src/static
 
-  nginx-letsencrypt:
+  letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
-    container_name: nginx-letsencrypt
+    container_name: letsencrypt
     restart: unless-stopped
     volumes:
       - /etc/nginx/conf.d:/etc/nginx/conf.d
