@@ -235,6 +235,10 @@ server {
 	include /etc/nginx/vhost.d/default;
 	{{ end }}
 
+	location /static {
+		alias /src/static;
+	}
+
 	location / {
 		{{ if eq $proto "uwsgi" }}
 		include uwsgi_params;
