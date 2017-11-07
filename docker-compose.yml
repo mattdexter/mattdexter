@@ -3,12 +3,17 @@ version: "3"
 services:
 
   postgres:
+    restart: unless-stopped
     image: postgres:latest
+    volumes:
+      - data:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=$POSTGRES_USER
       - POSTGRES_PASS=$POSTGRES_PASS
 
   webapp:
+    restart: unless-stopped
+    image: mattdexter/mattdexter-webapp:latest
     build: ./webapp
     volumes:
       - ./webapp:/src
@@ -19,22 +24,28 @@ services:
       - DJANGO_STATIC_ROOT=$DJANGO_STATIC_ROOT
       - GUNICORN_WORKERS=$GUNICORN_WORKERS
       - GUNICORN_BIND=$GUNICORN_BIND
-      - NGINX_SERVER_NAME=$NGINX_SERVER_NAME
       - POSTGRES_NAME=$POSTGRES_NAME
       - POSTGRES_USER=$POSTGRES_USER
       - POSTGRES_HOST=$POSTGRES_HOST
       - POSTGRES_PORT=$POSTGRES_PORT
+      - VIRTUAL_HOST=$VIRTUAL_HOST
     depends_on:
       - postgres
 
-  nginx:
-    build: ./nginx
-    volumes:
-      - ./webapp:/src
+  nginx-proxy:
+    restart: unless-stopped
+    image: jwilder/nginx-proxy
     ports:
       - "80:80"
       - "443:443"
-    environment:
-      - NGINX_SERVER_NAME=$NGINX_SERVER_NAME
+    volumes:
+      - /etc/nginx/vhost.d
+      - /usr/share/nginx/html
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./nginx.tmpl:/app/nginx.tmpl
+      - ./webapp/static:/src/static
     depends_on:
       - webapp
+
+volumes:
+  data:
