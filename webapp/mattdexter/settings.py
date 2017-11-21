@@ -33,13 +33,13 @@ ALLOWED_HOSTS = [os.environ['VIRTUAL_HOST'],
 
 INSTALLED_APPS = [
     'portfolio.apps.PortfolioConfig',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
 ]
 
 MIDDLEWARE = [
