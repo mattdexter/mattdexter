@@ -1,5 +1,5 @@
 Django
 djangorestframework
-django-rest-swagger
+mongoengine
 psycopg2
 gunicorn
