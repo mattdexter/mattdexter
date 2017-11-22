@@ -2,7 +2,7 @@
 .envrc
 *.pyc
 
-portfolio
+webapp/portfolio/dexter.json
 static
 
 TODO.md
