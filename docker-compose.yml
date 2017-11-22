@@ -17,11 +17,9 @@ services:
     image: mongo:latest
     container_name: mongodb
     volumes:
-      - mdata:/var/lib/mongodb/data
+      - mdata:/data/db
     ports:
       - "27017:27017"
-    environment:
-      - MONGO_DATA_DIR=$MONGO_DATA_DIR
     depends_on:
       - postgres
 
@@ -39,10 +37,13 @@ services:
       - DJANGO_STATIC_ROOT=$DJANGO_STATIC_ROOT
       - GUNICORN_WORKERS=$GUNICORN_WORKERS
       - GUNICORN_BIND=$GUNICORN_BIND
-      - POSTGRES_NAME=$POSTGRES_NAME
       - POSTGRES_USER=$POSTGRES_USER
+      - POSTGRES_NAME=$POSTGRES_NAME
       - POSTGRES_HOST=$POSTGRES_HOST
       - POSTGRES_PORT=$POSTGRES_PORT
+      - MONGODB_NAME=$MONGODB_NAME
+      - MONGODB_HOST=$MONGODB_HOST
+      - MONGODB_PORT=$MONGODB_PORT
       - VIRTUAL_HOST=$VIRTUAL_HOST
       - LETSENCRYPT_HOST=$LETSENCRYPT_HOST
       - LETSENCRYPT_EMAIL=$LETSENCRYPT_EMAIL
