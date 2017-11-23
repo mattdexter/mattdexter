@@ -21,7 +21,7 @@ services:
     ports:
       - "27017:27017"
     environment:
-      - MONGO_DATA_DIR=$MONGO_DATA_DIR
+      - MONGO_DATA_DIR=/var/lib/mongodb/data
     depends_on:
       - postgres
 
