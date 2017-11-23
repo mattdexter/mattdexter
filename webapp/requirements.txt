@@ -1,5 +1,6 @@
 Django
 djangorestframework
+django-rest-framework-mongoengine
 mongoengine
 psycopg2
 gunicorn
