@@ -1,0 +1,110 @@
+{
+    "name": "Matt Dexter",
+    "profession": "Full Stack Developer",
+    "email": "matt@mattdexter.io",
+    "phone": "224-735-0017",
+    "website": "https://mattdexter.io",
+    "github": "github.com/mattdexter",
+    "summary": "My name is Matt Dexter. I'm a full-stack developer, a data analyst, and startup owner. I worked in IT the financial services industry for six years before co-founding my startup, ReviewLabs, Inc. In my past roles, I've worked extensively on analytics, web design, database management, and ETL. I'm primarily working in Python right now, but I've used Java and ColdFusion a lot in the past.",
+    "skills": [
+        "Python",
+        "Django",
+        "Java",
+        "SQL",
+        "UNIX",
+        "shell script",
+        "Docker",
+        "AWS",
+        "SAS",
+        "Teradata",
+        "MySQL",
+        "MongoDB",
+        "Node.js",
+        "ColdFusion",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "jQuery",
+        "Bootstrap",
+        "Pug",
+        "Gulp/Grunt"
+    ],
+    "career": [
+        {
+            "company": "ReviewLabs, Inc.",
+            "title": "Co-Founder and CFO",
+            "highlights": [
+                "Co-created the ReviewLabs business model",
+                "Created the customer-facing website https://reviewlabs.co",
+                "Co-created a Django/PostgreSQL Docker stack for AWS",
+                "Managed finance, accounting, and corporate governance"
+            ],
+            "start_date": "2017-04-01T00:00:00Z",
+            "end_date": "9999-12-31T00:00:00Z"
+        },
+        {
+            "company": "Discover Financial Services",
+            "title": "Sr. Assoc., Data Infrastructure",
+            "highlights": [
+                "Developed a web-based inventory analysis & reporting platform",
+                "Developed and maintained a MySQL inventory datastore",
+                "Developed a suite of ETL tools with Java, SAS, and Teradata",
+                "Created a Java Spring/MySQL stack for Pivotal CloudFoundry",
+                "Managed GPFS and Teradata space constraints for 900+ users"
+            ],
+            "start_date": "2015-05-01T00:00:00Z",
+            "end_date": "2017-06-01T00:00:00Z"
+        },
+        {
+            "company": "Discover Financial Services",
+            "title": "Reporting & Analysis Manager",
+            "highlights": [
+                "Administered a ColdFusion reporting site, database, and batch ETL",
+                "Managed a rapid app development team of 5 developers",
+                "Applied BI data strategies to develop new business processes",
+                "Administered code review, coaching, evaluations, and interviews"
+            ],
+            "start_date": "2014-05-01T00:00:00Z",
+            "end_date": "2015-04-01T00:00:00Z"
+        },
+        {
+            "company": "Discover Financial Services",
+            "title": "Sr. Reporting Analyst",
+            "highlights": [
+                "Developed a ColdFusion reporting site, database, and batch ETL",
+                "Developed a learning management system for CFPB compliance",
+                "Developed ETL processes with Java and Teradata",
+                "Automated manual administrative tasks, reports, and processes"
+            ],
+            "start_date": "2012-04-01T00:00:00Z",
+            "end_date": "2014-04-01T00:00:00Z"
+        },
+        {
+            "company": "Discover Financial Services",
+            "title": "Sr. Credit Analyst",
+            "highlights": [
+                "Conducted regular reviews of financial and credit information",
+                "Judgmentally determined cardmembers’ lines of credit",
+                "Educated cardmembers about credit resources"
+            ],
+            "start_date": "2011-06-01T00:00:00Z",
+            "end_date": "2012-03-01T00:00:00Z"
+        }
+    ],
+    "education": [
+        {
+            "title": "Master of Science, Finance",
+            "institution": "The University of Utah",
+            "location": "Salt Lake City, UT",
+            "start_date": "2012-08-01T00:00:00Z",
+            "end_date": "2015-12-31T00:00:00Z"
+        },
+        {
+            "title": "BS Finance/Economics",
+            "institution": "The University of Alabama",
+            "location": "Tuscaloosa, AL",
+            "start_date": "2006-08-01T00:00:00Z",
+            "end_date": "2010-12-31T00:00:00Z"
+        }
+    ]
+}
