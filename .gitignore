@@ -3,6 +3,5 @@
 *.pyc
 
 webapp/portfolio/dexter.json
-static
 
 TODO.md
